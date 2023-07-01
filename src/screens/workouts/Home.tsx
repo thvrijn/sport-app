@@ -1,12 +1,14 @@
 import React from 'react'
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import { SafeAreaView, StyleSheet, Appearance } from 'react-native'
+import { DarkTheme } from '@react-navigation/native'
 import { Forms } from '../../components'
-import Colors from '../../variables/colors'
 
 export default function Home() {
+    console.log(DarkTheme.colors);
+
     return (
         <SafeAreaView style={styles.container}>
-            <Forms.Input placeholder={'Email'} />
+            <Forms.Input placeholder={'Search...'} icon={'MagnifyingGlassIcon'} />
         </SafeAreaView>
     )
 }
@@ -15,6 +17,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 16,
-        backgroundColor: Colors.neutral[950],
     }
 })
