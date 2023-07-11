@@ -1,22 +1,25 @@
 import React from 'react'
-import { View, TextInput, StyleSheet } from 'react-native'
+import {View, TextInput, StyleSheet, PlatformColor} from 'react-native'
+import {DarkTheme, useTheme} from '@react-navigation/native'
 import Colors from '../../variables/colors'
-import { Icons } from '../../components'
+import * as Icons from '../../components/icons'
 
 interface InputProps {
-    placeholder: string
+    placeholder?: string
     icon?: string
+    style?: object
 }
 
-export default function Input({ placeholder, icon }: InputProps) {
+export default function Input({placeholder, icon, style}: InputProps) {
     return (
-        <View style={styles.container}>
-            {icon && <Icons.HeroIcons  name={icon} color={Colors.neutral['600']} style={styles.icon} />}
+        <View style={{...styles.container, ...style}}>
+            {icon && <Icons.SFSymbols style={styles.icon} name={icon} color={PlatformColor('placeholderText')}/>}
+
 
             <TextInput
                 style={styles.input}
                 placeholder={placeholder}
-                placeholderTextColor={Colors.neutral[600]}
+                placeholderTextColor={PlatformColor('placeholderText')}
             />
         </View>
 
@@ -27,10 +30,10 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: Colors.neutral[800],
+        backgroundColor: PlatformColor('tertiarySystemFill'),
         paddingHorizontal: 12,
         paddingVertical: 8,
-        borderRadius: 8,
+        borderRadius: 10,
         fontWeight: '600'
     },
     icon: {
@@ -38,5 +41,6 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
+        color: PlatformColor('label')
     }
 })

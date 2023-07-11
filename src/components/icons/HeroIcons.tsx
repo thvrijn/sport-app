@@ -1,4 +1,5 @@
 import React from 'react'
+import {OpaqueColorValue} from 'react-native'
 import * as Mini from 'react-native-heroicons/mini'
 import * as Outline from 'react-native-heroicons/outline'
 import * as Solid from 'react-native-heroicons/solid'
@@ -12,14 +13,14 @@ const icons = {
 interface HeroIconsProps {
     repo?: string
     name: string
-    color?: string
+    color?: string | OpaqueColorValue
     style?: object
 }
 
-export default function HeroIcons({ repo = 'outline', name, color, style }: HeroIconsProps) {
+export default function HeroIcons({repo = 'outline', name, color, style}: HeroIconsProps) {
     const Component = icons[repo][name]
 
     return (
-        <Component color={color} style={style} />
+        <Component color={color} style={style}/>
     )
 }
